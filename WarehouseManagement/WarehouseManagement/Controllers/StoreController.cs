@@ -161,7 +161,7 @@ namespace WarehouseManagement.Controllers
 
         [HttpGet ]
         
-        public  IActionResult OrderAll(int quantity=5)
+        public  IActionResult OrderAll(int quantity=15)
         {
             _service.fillWholeStore(quantity);
             var storeItems = _context.storeItems;
@@ -178,6 +178,13 @@ namespace WarehouseManagement.Controllers
 
 
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Restock()
+        {
+            _service.RestockStore();
             return RedirectToAction(nameof(Index));
         }
 
